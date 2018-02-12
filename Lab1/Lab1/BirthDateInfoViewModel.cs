@@ -101,7 +101,9 @@ namespace Lab1
 
         private static ZodiacSign CalculateZodiacSign(DateTime birthDate)
         {
-            int inCycleYear = birthDate.Year % 12;
+            // the first year when the cycle would start after 0th yearAD
+            const int firstCycleStartAD = 4;
+            int inCycleYear = (birthDate.Year - firstCycleStartAD) % 12;
             return (ZodiacSign) inCycleYear;
         }
     }
