@@ -54,10 +54,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AsyncCommandBase.cs" />
-    <Compile Include="DateSubmitCommandAsync.cs" />
+    <Compile Include="BirthDataConverter.cs" />
+    <Compile Include="AstrologicalSign.cs" />
+    <Compile Include="BaseViewModel.cs" />
+    <Compile Include="BirthDateInfoViewModel.cs" />
     <Compile Include="DelegateCommandAsync.cs" />
     <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="ZodiacSign.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

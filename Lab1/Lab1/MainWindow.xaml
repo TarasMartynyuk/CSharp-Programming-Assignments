@@ -5,27 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:lab1="clr-namespace:Lab1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="300">
+        Title="MainWindow" Height="400" Width="400">
 
-    <Window.DataContext>
-        <lab1:MainWindowViewModel></lab1:MainWindowViewModel>
-    </Window.DataContext>
+    <!--<Window.DataContext>
+        <ObjectDataProvider ObjectType="lab1:MainWindowViewModel">
+            <ObjectDataProvider.ConstructorParameters>
+                <lab1:BirthDateInfoViewModel></lab1:BirthDateInfoViewModel>
+            </ObjectDataProvider.ConstructorParameters>
+        </ObjectDataProvider>
+    </Window.DataContext>-->
     <Grid>
+        <TextBox Text="Your birth date: " HorizontalAlignment="Left" Width="100" Margin="30,30,0,0" 
+                 VerticalAlignment="Top" Height="25" TextWrapping="Wrap" TextAlignment="Center"/>
+        <DatePicker SelectedDate="{Binding BirthDate}" HorizontalAlignment="Right" Width="100" 
+                    Margin="0,30,30,0" VerticalAlignment="Top" Height="25"/>
+        <Button Name="SubmitButton" Command="{Binding DateSubmitCommand}" Content="What's can you tell me from that?" 
+                HorizontalAlignment="Center" Width="200" Margin="0,120,0,0"
+                VerticalAlignment="Top" Height="30" Background="DarkSeaGreen"/>
 
-        <DatePicker SelectedDate="{Binding BirthDate}" HorizontalAlignment="Left" Margin="60,58,0,0" VerticalAlignment="Top"/>
-        <Button Command="{Binding DateSubmitCommand}"  Content="What's my age?" HorizontalAlignment="Left" Margin="48,128,0,0" VerticalAlignment="Top" Width="126"/>
-        <TextBlock Name="AgeTextBlock" Text="{Binding AgeText}"
-                   HorizontalAlignment="Center" Margin="0,185,0,0" TextWrapping="Wrap" 
-                   VerticalAlignment="Top" TextAlignment="Center" />
-        <TextBlock Name="WesternZodiacTextBlock" Text="{Binding AgeText}"
-                   HorizontalAlignment="Left" Margin="180,250,0,0" TextWrapping="Wrap" 
-                   VerticalAlignment="Top" RenderTransformOrigin="0.454,0.833" 
-                   Height="24" Width="72" TextAlignment="Center"/>
-        <TextBlock Name="ChineeseZodiacTextBlock" 
-                   HorizontalAlignment="Left" Margin="37,250,0,0" TextWrapping="Wrap" 
-                   Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="-1.784,-0.442" 
-                   Height="30" Width="98" TextAlignment="Center"/>
-                    
+        <Grid Name="InfoShowGrid" Visibility="{Binding Visibility}" HorizontalAlignment="Stretch" 
+              Height="150" Margin="0,195,0,25.4" VerticalAlignment="Stretch">
+            <!--<Grid.DataContext>
+                <lab1:BirthDateInfoViewModel/>
+            </Grid.DataContext>-->
+            <TextBlock Name="AgeTextBlock" Text="{Binding AgeText, StringFormat='Your Age: {0}'}"
+                HorizontalAlignment="Center" Margin="0,15,0,0" TextWrapping="Wrap" 
+                VerticalAlignment="Top" TextAlignment="Center" />
+            <TextBlock Name="AstrologicalSignextBlock"
+                HorizontalAlignment="Right" Margin="0,70,49.6,0" TextWrapping="Wrap" 
+                VerticalAlignment="Top" Height="42" Width="120" TextAlignment="Center">
+                <Run Text="Your Astrological Sign:"/><LineBreak/><Run Text="{Binding AstrologicalSign}"/>
+            </TextBlock>
+            <TextBlock Name="ChineeseZodiacTextBlock" 
+                HorizontalAlignment="Left" Margin="50,70,0,0" TextWrapping="Wrap" 
+                VerticalAlignment="Top" RenderTransformOrigin="-1.784,-0.442" 
+                Height="42" Width="98" TextAlignment="Center">
+                <Run Text="Your Zodiac Sign:"/><LineBreak/><Run Text="{Binding ZodiacSign}"/>
+            </TextBlock>
+        </Grid>
 
     </Grid>
 </Window>
