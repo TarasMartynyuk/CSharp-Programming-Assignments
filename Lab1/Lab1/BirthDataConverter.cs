@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
+//unused using
 
 namespace Lab1
 {
-    static class BirthDataConverter
+    internal static class BirthDataConverter
     {
-        public static bool IsBirthday(DateTime birthDate)
+        internal static bool IsBirthday(DateTime birthDate)
         {
             if(IsValidBirthDate(birthDate) == false)
             {
@@ -14,12 +14,12 @@ namespace Lab1
             return DateTime.Now.DayOfYear == birthDate.DayOfYear;
         }
 
-        public static int CalculateAge(DateTime birthDate)
+        internal static int CalculateAge(DateTime birthDate)
         {
             return DateTime.Now.Year - birthDate.Year;
         }
 
-        public static bool IsValidBirthDate(DateTime birthDate)
+        internal static bool IsValidBirthDate(DateTime birthDate)
         {
             return IsValidAge(CalculateAge(birthDate));
         }

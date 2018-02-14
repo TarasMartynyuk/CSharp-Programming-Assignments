@@ -3,15 +3,16 @@ using System.Windows;
 
 namespace Lab1
 {
+    //Looks like this should be a model, not a viewModel
     /// <summary>
     /// represents the panel that shows age, zodiac and astrological sign
     /// </summary>
-    public class BirthDateInfoViewModel : BaseViewModel
+    internal class BirthDateInfoViewModel : BaseViewModel
     {
         public Visibility Visibility
         {
             get => _visibility;
-            set
+            private set
             {
                 if(_visibility != value)
                 {
@@ -25,7 +26,7 @@ namespace Lab1
         public string AgeText
         {
             get => _ageText;
-            set
+            private set
             {
                 if(_ageText != value)
                 {
@@ -38,7 +39,7 @@ namespace Lab1
         public AstrologicalSign AstrologicalSign
         {
             get => _astrologicalSign;
-            set
+            private set
             {
                 if(_astrologicalSign != value)
                 {
@@ -52,7 +53,7 @@ namespace Lab1
         public ZodiacSign ZodiacSign
         {
             get => _zodiacSign;
-            set
+            private set
             {
                 if(_zodiacSign != value)
                 {
@@ -67,12 +68,12 @@ namespace Lab1
         private ZodiacSign _zodiacSign;
         private Visibility _visibility;
 
-        public BirthDateInfoViewModel()
+        internal BirthDateInfoViewModel()
         {
             Visibility = Visibility.Collapsed;
         }
 
-        public void ShowBirthDateInfo(DateTime birthDate)
+        internal void ShowBirthDateInfo(DateTime birthDate)
         {
             if(BirthDataConverter.IsValidBirthDate(birthDate) == false)
             {
@@ -89,7 +90,7 @@ namespace Lab1
             const int astrologicalYearStartMonth = 3;
 
             //Console.WriteLine("birthDate.DayOfYear: {0}", birthDate.DayOfYear);
-            int monthOrdinalFromMarch =  ((birthDate.DayOfYear) / 31 - astrologicalYearStartMonth);
+            int monthOrdinalFromMarch = birthDate.DayOfYear / 31 - astrologicalYearStartMonth;
 
             //Console.WriteLine("monthOrdinalFromMarch" + monthOrdinalFromMarch);
             if(monthOrdinalFromMarch < 0)

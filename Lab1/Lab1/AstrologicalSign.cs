@@ -1,6 +1,6 @@
 ﻿namespace Lab1
 {
-    public enum AstrologicalSign
+    internal enum AstrologicalSign
     {
         Aries, 
         Taurus, 

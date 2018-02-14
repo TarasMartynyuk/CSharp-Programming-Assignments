@@ -3,17 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:lab1="clr-namespace:Lab1"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="400">
-
-    <!--<Window.DataContext>
-        <ObjectDataProvider ObjectType="lab1:MainWindowViewModel">
-            <ObjectDataProvider.ConstructorParameters>
-                <lab1:BirthDateInfoViewModel></lab1:BirthDateInfoViewModel>
-            </ObjectDataProvider.ConstructorParameters>
-        </ObjectDataProvider>
-    </Window.DataContext>-->
     <Grid>
         <TextBox Text="Your birth date: " HorizontalAlignment="Left" Width="100" Margin="30,30,0,0" 
                  VerticalAlignment="Top" Height="25" TextWrapping="Wrap" TextAlignment="Center"/>
@@ -23,24 +14,21 @@
                 HorizontalAlignment="Center" Width="200" Margin="0,120,0,0"
                 VerticalAlignment="Top" Height="30" Background="DarkSeaGreen"/>
 
-        <Grid Name="InfoShowGrid" Visibility="{Binding Visibility}" HorizontalAlignment="Stretch" 
+        <Grid Name="InfoShowGrid" Visibility="{Binding Visibility, Mode=OneWay}" HorizontalAlignment="Stretch" 
               Height="150" Margin="0,195,0,25.4" VerticalAlignment="Stretch">
-            <!--<Grid.DataContext>
-                <lab1:BirthDateInfoViewModel/>
-            </Grid.DataContext>-->
-            <TextBlock Name="AgeTextBlock" Text="{Binding AgeText, StringFormat='Your Age: {0}'}"
+            <TextBlock Name="AgeTextBlock" Text="{Binding AgeText, StringFormat='Your Age: {0}', Mode=OneWay}"
                 HorizontalAlignment="Center" Margin="0,15,0,0" TextWrapping="Wrap" 
                 VerticalAlignment="Top" TextAlignment="Center" />
             <TextBlock Name="AstrologicalSignextBlock"
                 HorizontalAlignment="Right" Margin="0,70,49.6,0" TextWrapping="Wrap" 
                 VerticalAlignment="Top" Height="42" Width="120" TextAlignment="Center">
-                <Run Text="Your Astrological Sign:"/><LineBreak/><Run Text="{Binding AstrologicalSign}"/>
+                <Run Text="Your Astrological Sign:"/><LineBreak/><Run Text="{Binding AstrologicalSign, Mode=OneWay}"/>
             </TextBlock>
             <TextBlock Name="ChineeseZodiacTextBlock" 
                 HorizontalAlignment="Left" Margin="50,70,0,0" TextWrapping="Wrap" 
                 VerticalAlignment="Top" RenderTransformOrigin="-1.784,-0.442" 
                 Height="42" Width="98" TextAlignment="Center">
-                <Run Text="Your Zodiac Sign:"/><LineBreak/><Run Text="{Binding ZodiacSign}"/>
+                <Run Text="Your Zodiac Sign:"/><LineBreak/><Run Text="{Binding ZodiacSign, Mode=OneWay}"/>
             </TextBlock>
         </Grid>
 

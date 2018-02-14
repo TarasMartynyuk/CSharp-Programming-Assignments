@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Windows;
+//Unused using
 using System.Windows.Input;
 
 namespace Lab1

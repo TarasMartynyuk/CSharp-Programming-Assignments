@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Windows;
-using System.Runtime.CompilerServices;
-using System.ComponentModel;
+//unused using
 using System.Windows.Input;
 using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace Lab1
 {
-    public class MainWindowViewModel : BaseViewModel
+    internal class MainWindowViewModel : BaseViewModel
     {
         #region Binding Properties
         public DateTime BirthDate
@@ -25,18 +23,18 @@ namespace Lab1
             }
         }
 
-        public ICommand DateSubmitCommand { get; set; }
+        public ICommand DateSubmitCommand { get; }
         #endregion
 
         private DateTime _birthDate = DateTime.Now;
         private readonly BirthDateInfoViewModel _birthDateInfo;
 
-        public MainWindowViewModel()
+        internal MainWindowViewModel()
         {
             DateSubmitCommand = new DelegateCommandAsync(DateSubmitExecuteAsync);
 
         }
-        public MainWindowViewModel(BirthDateInfoViewModel birthDateInfo) : this()
+        internal MainWindowViewModel(BirthDateInfoViewModel birthDateInfo) : this()
         {
             _birthDateInfo = birthDateInfo ?? throw new ArgumentNullException(nameof(birthDateInfo));
         }
